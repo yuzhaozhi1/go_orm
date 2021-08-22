@@ -13,6 +13,9 @@ func connection1(dsn string) {
 	fmt.Println(db, err)
 }
 
+
+var GLOBAL_DB *gorm.DB
+
 // 可自己选择配置的连接
 func connection2(dsn string) {
 	db, _ := gorm.Open(mysql.New(mysql.Config{
@@ -49,7 +52,7 @@ func connection2(dsn string) {
 	//db.AutoMigrate(&User{})
 
 	// 手动创建表
-	M := db.Migrator()
+	//M := db.Migrator()
 
 	// 创建表
 	//M.CreateTable(&User{})
@@ -62,9 +65,9 @@ func connection2(dsn string) {
 	//M.RenameTable("t_user", "user_back")
 
 	// 删除表
-	M.DropTable("user_back")
-
-	fmt.Println(db)
+	//M.DropTable("user_back")
+	GLOBAL_DB = db
+	//fmt.Println(db)
 }
 
 type User struct {
