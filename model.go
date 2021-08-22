@@ -35,6 +35,7 @@ type User struct {
 	ActivedAt    sql.NullTime
 }
 
+
 func CreateUser() {
 	err := GLOBAL_DB.AutoMigrate(&User{})
 	if err != nil {
