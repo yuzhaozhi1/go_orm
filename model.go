@@ -39,6 +39,7 @@ type User struct {
 type Student struct {
 	ID   uint   `gorm:"primaryKey;autoIncrement;column:id;comment:主键id"`
 	Name string `gorm:"not null;index;comment:姓名"`
+	Hobby string `gorm:"comment:爱好"`
 	Age  int `gorm:"comment:年龄"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
@@ -54,7 +55,8 @@ func CreateUser() {
 }
 
 func CreateStudent(){
-	err := GLOBAL_DB.Migrator().CreateTable(&Student{})
+	//err := GLOBAL_DB.Migrator().CreateTable(&Student{})
+	err := GLOBAL_DB.AutoMigrate(&Student{})
 	if err != nil {
 		fmt.Println(err)
 		return

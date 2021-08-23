@@ -83,6 +83,11 @@ func main() {
 
 	// CreateUser()
 	// DROpUser()
-	//CreateStudent()
-	AddUser()
+	// 创建数据库
+	CreateStudent()
+	// 增
+	// AddUser()
+
+	// 查
+	FindObj()
 }
