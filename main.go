@@ -19,7 +19,7 @@ var GLOBAL_DB *gorm.DB
 // 可自己选择配置的连接
 func connection2(dsn string) {
 	db, _ := gorm.Open(mysql.New(mysql.Config{
-		//DefaultStringSize: 256, // string 类型字段的默认长度 utf8
+		// DefaultStringSize: 256, // string 类型字段的默认长度 utf8
 		// 需要注意, 否则使用字符串当成主键会造成索引超长
 		DefaultStringSize: 171, // string 类型字段的默认长度 utf8
 		DSN:               dsn,
@@ -49,25 +49,25 @@ func connection2(dsn string) {
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
 	// 自动创建表
-	//db.AutoMigrate(&User{})
+	// db.AutoMigrate(&User{})
 
 	// 手动创建表
-	//M := db.Migrator()
+	// M := db.Migrator()
 
 	// 创建表
-	//M.CreateTable(&User{})
+	// M.CreateTable(&User{})
 
 	// 判断表是否存在
-	//fmt.Println(M.HasTable(&User{})) // true
-	//fmt.Println(M.HasTable("t_user")) // true
+	// fmt.Println(M.HasTable(&User{})) // true
+	// fmt.Println(M.HasTable("t_user")) // true
 
 	// 修改表名
-	//M.RenameTable("t_user", "user_back")
+	// M.RenameTable("t_user", "user_back")
 
 	// 删除表
-	//M.DropTable("user_back")
+	// M.DropTable("user_back")
 	GLOBAL_DB = db
-	//fmt.Println(db)
+	// fmt.Println(db)
 }
 
 
@@ -75,12 +75,14 @@ func connection2(dsn string) {
 func main() {
 	// 想要正确的处理 time.Time ，您需要带上 parseTime 参数，
 	// (更多参数) 要支持完整的 UTF-8 编码，您需要将 charset=utf8 更改为 charset=utf8mb4
-	dsn := "root:123abc@tcp(127.0.0.1:3306)/go_orm?charset=utf8mb4&parseTime=True&loc=Local"
+	// dsn := "root:123abc@tcp(127.0.0.1:3306)/go_orm?charset=utf8mb4&parseTime=True&loc=Local"
+	dsnALY := "go_orm:123abc@tcp(123.57.130.213:3306)/go_orm?charset=utf8mb4&parseTime=True&loc=Local"
 	// 基础连接
-	//connection1(dsn)
-	connection2(dsn)
+	// connection1(dsn)
+	connection2(dsnALY)
 
-	CreateUser()
-	//DROpUser()
-
+	// CreateUser()
+	// DROpUser()
+	//CreateStudent()
+	AddUser()
 }
